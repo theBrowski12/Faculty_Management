@@ -15,7 +15,7 @@ kind: Deployment
 metadata:
   name: faculty-filiere-service
 spec:
-  replicas: 3
+  replicas: 2
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -46,12 +46,6 @@ spec:
               value: "root"
             - name: SPRING_DATASOURCE_PASSWORD
               value: "root"
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8081
-            initialDelaySeconds: 60
-            periodSeconds: 15
           readinessProbe:
             httpGet:
               path: /actuator/health
